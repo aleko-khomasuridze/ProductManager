@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ProductDAO {
-    public void insertProduct(ProductDTO product);
-    public void updateProduct(Product product) ;
-    public boolean deleteProduct(Product product) ;
-    public Product findProductById(int id);
-    public List<Product> findAllProduct();
+    public void insertProduct(ProductDTO productDTO) throws SQLException;
+    public void updateProduct(ProductDTO productDTO) throws SQLException;
+    public boolean deleteProduct(ProductDTO productDTO) throws SQLException;
+    public ProductDTO findProductById(int id) throws SQLException;
+    public List<Product> findAllProduct() throws SQLException;
 }
