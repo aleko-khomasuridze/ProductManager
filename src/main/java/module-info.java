@@ -9,6 +9,7 @@ module com.example.productmanager.alekokhomasuridze {
     requires mysql.connector.java;
     requires java.desktop;
 
+    opens com.example.productmanager.alekokhomasuridze.model.entity to javafx.base;
     opens com.example.productmanager.alekokhomasuridze.controler to javafx.fxml;
     exports com.example.productmanager.alekokhomasuridze;
 }

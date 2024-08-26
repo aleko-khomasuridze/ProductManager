@@ -41,7 +41,7 @@
    <bottom>
       <ButtonBar prefHeight="59.0" prefWidth="738.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button mnemonicParsing="false" stylesheets="@styles/bootstrapfx.css" text="Refresh">
+          <Button mnemonicParsing="false" stylesheets="@styles/bootstrapfx.css" onAction="#refreshProductData" text="Refresh">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-primary" />

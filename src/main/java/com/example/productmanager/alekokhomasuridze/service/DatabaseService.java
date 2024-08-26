@@ -4,6 +4,7 @@ import com.example.productmanager.alekokhomasuridze.dao.ProductDAO;
 import com.example.productmanager.alekokhomasuridze.dao.ProductDAOImpl;
 import com.example.productmanager.alekokhomasuridze.model.dto.ProductDTO;
 import com.example.productmanager.alekokhomasuridze.model.entity.Product;
+import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -53,7 +54,7 @@ public class DatabaseService {
     }
 
     // List all products
-    public List<Product> getAllProducts() {
+    public ObservableList<Product> getAllProducts() {
         try {
             return productDAO.findAllProduct();
         } catch (SQLException e) {

@@ -2,6 +2,8 @@ package com.example.productmanager.alekokhomasuridze.dao;
 
 import com.example.productmanager.alekokhomasuridze.model.dto.ProductDTO;
 import com.example.productmanager.alekokhomasuridze.model.entity.Product;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -40,8 +42,8 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public List<Product> findAllProduct() throws SQLException {
-        List<Product> products = new ArrayList<>();
+    public ObservableList<Product> findAllProduct() throws SQLException {
+        ObservableList<Product> products = FXCollections.observableArrayList();
         String sql = "SELECT * FROM Products";
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
