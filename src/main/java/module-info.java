@@ -7,7 +7,8 @@ module com.example.productmanager.alekokhomasuridze {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires mysql.connector.java;
+    requires java.desktop;
 
-    opens com.example.productmanager.alekokhomasuridze to javafx.fxml;
+    opens com.example.productmanager.alekokhomasuridze.controler to javafx.fxml;
     exports com.example.productmanager.alekokhomasuridze;
 }
