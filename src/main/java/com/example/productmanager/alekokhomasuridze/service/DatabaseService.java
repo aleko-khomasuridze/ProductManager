@@ -17,7 +17,7 @@ public class DatabaseService {
     }
 
     // Adds a new product to the database
-    public void addProduct(ProductDTO product) {
+    public void addProduct(Product product) {
         try {
             productDAO.insertProduct(product);
         } catch (SQLException e) {
@@ -36,18 +36,18 @@ public class DatabaseService {
     }
 
     // Updates an existing product
-    public void updateProduct(ProductDTO productDTO) {
+    public void updateProduct(Product product) {
         try {
-            productDAO.updateProduct(productDTO);
+            productDAO.updateProduct(product);
         } catch (SQLException e) {
             throw new RuntimeException("Error updating product", e);
         }
     }
 
     // Deletes a product by ID
-    public boolean deleteProduct(ProductDTO productDTO) {
+    public boolean deleteProduct(Product product) {
         try {
-            return productDAO.deleteProduct(productDTO);
+            return productDAO.deleteProduct(product);
         } catch (SQLException e) {
             throw new RuntimeException("Error deleting product", e);
         }

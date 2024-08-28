@@ -10,6 +10,6 @@ module com.example.productmanager.alekokhomasuridze {
     requires java.desktop;
 
     opens com.example.productmanager.alekokhomasuridze.model.entity to javafx.base;
-    opens com.example.productmanager.alekokhomasuridze.controler to javafx.fxml;
+    opens com.example.productmanager.alekokhomasuridze.controller to javafx.fxml;
     exports com.example.productmanager.alekokhomasuridze;
 }

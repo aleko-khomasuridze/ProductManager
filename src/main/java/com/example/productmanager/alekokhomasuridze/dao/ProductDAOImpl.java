@@ -6,8 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProductDAOImpl implements ProductDAO {
     private final Connection connection;
@@ -18,7 +16,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 
     @Override
-    public void insertProduct(ProductDTO product) throws SQLException {
+    public void insertProduct(Product product) throws SQLException {
         String sql = "INSERT INTO Products (name, description, price, quantity) VALUES (?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, product.getName());
@@ -63,14 +61,14 @@ public class ProductDAOImpl implements ProductDAO {
 
 
     @Override
-    public void updateProduct(ProductDTO productDTO) throws SQLException {
+    public void updateProduct(Product product) throws SQLException {
         String sql = "UPDATE Products SET name = ?, description = ?, price = ?, quantity = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, productDTO.getName());
-            statement.setString(2, productDTO.getDescription());
-            statement.setDouble(3, productDTO.getPrice());
-            statement.setInt(4, productDTO.getQuantity());
-            statement.setInt(5, productDTO.getId());
+            statement.setString(1, product.getName());
+            statement.setString(2, product.getDescription());
+            statement.setDouble(3, product.getPrice());
+            statement.setInt(4, product.getQuantity());
+            statement.setInt(5, product.getId());
 
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
@@ -80,10 +78,10 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public boolean deleteProduct(ProductDTO productDTO) throws SQLException {
+    public boolean deleteProduct(Product product) throws SQLException {
         String sql = "DELETE FROM Products WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, productDTO.getId());
+            statement.setInt(1, product.getId());
             int affectedRows = statement.executeUpdate();
             return affectedRows > 0;
         }
