@@ -106,9 +106,23 @@ public class TableController {
     }
 
     private void handleEditAction(Product product) {
-        // Delegate to a service or open a dialog for editing
-        // For example, open a product edit form dialog
-        // ProductEditDialog.show(product);
+        Stage stage = new Stage();
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/example/productmanager/alekokhomasuridze/EditProductWindow.fxml")));
+            root = loader.load();
+            ProductEditController productEditController = loader.getController();
+            productEditController.setProduct(product);
+            productEditController.setTableController(this);
+        } catch (IOException | NullPointerException e) {
+            System.out.print(e.getMessage());
+        }
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Edit Product");
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 
     private void handleDeleteAction(Product product) {
@@ -129,7 +143,10 @@ public class TableController {
 
     public void addNewProduct(ActionEvent event) throws IOException {
         Stage addStage = new Stage();
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/productmanager/alekokhomasuridze/AddProductWindow.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/example/productmanager/alekokhomasuridze/AddProductWindow.fxml")));
+        Parent parent = loader.load();
+        ProductAddController productAddController = loader.getController();
+        productAddController.setTableController(this);
         Scene scene = new Scene(parent);
         addStage.setTitle("Add New Product");
         addStage.initModality(Modality.APPLICATION_MODAL); // Makes the window modal

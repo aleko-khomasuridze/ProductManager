@@ -61,14 +61,14 @@ public class ProductDAOImpl implements ProductDAO {
 
 
     @Override
-    public void updateProduct(Product product) throws SQLException {
+    public void updateProduct(Product targetProduct, Product newProduct) throws SQLException {
         String sql = "UPDATE Products SET name = ?, description = ?, price = ?, quantity = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, product.getName());
-            statement.setString(2, product.getDescription());
-            statement.setDouble(3, product.getPrice());
-            statement.setInt(4, product.getQuantity());
-            statement.setInt(5, product.getId());
+            statement.setString(1, newProduct.getName());
+            statement.setString(2, newProduct.getDescription());
+            statement.setDouble(3, newProduct.getPrice());
+            statement.setInt(4, newProduct.getQuantity());
+            statement.setInt(5, targetProduct.getId());
 
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {

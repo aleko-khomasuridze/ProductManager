@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public interface ProductDAO {
     public void insertProduct(Product product) throws SQLException;
-    public void updateProduct(Product product) throws SQLException;
+    public void updateProduct(Product targetProduct, Product newProduct) throws SQLException;
     public boolean deleteProduct(Product product) throws SQLException;
     public ProductDTO findProductById(int id) throws SQLException;
     public ObservableList<Product> findAllProduct() throws SQLException;

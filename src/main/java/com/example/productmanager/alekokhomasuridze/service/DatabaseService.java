@@ -36,9 +36,9 @@ public class DatabaseService {
     }
 
     // Updates an existing product
-    public void updateProduct(Product product) {
+    public void updateProduct(Product targetProduct, Product newProduct) {
         try {
-            productDAO.updateProduct(product);
+            productDAO.updateProduct(targetProduct, newProduct);
         } catch (SQLException e) {
             throw new RuntimeException("Error updating product", e);
         }

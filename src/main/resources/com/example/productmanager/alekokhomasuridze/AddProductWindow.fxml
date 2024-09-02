@@ -27,7 +27,7 @@
    <bottom>
       <ButtonBar prefHeight="67.0" prefWidth="385.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#add" text="Cancel">
+          <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancel" text="Cancel">
                <styleClass>
                   <String fx:value="btn-default" />
                   <String fx:value="my-btn" />
@@ -58,12 +58,12 @@
           <RowConstraints maxHeight="328.0" minHeight="10.0" prefHeight="16.0" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="25.0" prefWidth="223.0" promptText="Enter Product Description" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="descriptionField" prefHeight="25.0" prefWidth="223.0" promptText="Enter Product Description" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <styleClass>
                   <String fx:value="btn-default" />
                   <String fx:value="my-btn" />
                </styleClass></TextField>
-            <TextField promptText="Product Quantity" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="quantityField" promptText="Product Quantity" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <styleClass>
                   <String fx:value="my-btn" />
                   <String fx:value="btn-default" />
@@ -76,12 +76,12 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TextField promptText="Product Price" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="priceField" promptText="Product Price" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <styleClass>
                   <String fx:value="my-btn" />
                   <String fx:value="btn-default" />
                </styleClass></TextField>
-            <TextField promptText="Enter Product Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="nameField" promptText="Enter Product Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <styleClass>
                   <String fx:value="btn-default" />
                   <String fx:value="my-btn" />
