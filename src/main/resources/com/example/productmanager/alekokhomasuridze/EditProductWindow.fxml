@@ -32,7 +32,7 @@
                         <String fx:value="btn-default" />
                         <String fx:value="my-btn" />
                     </styleClass></Button>
-                <Button fx:id="editButton" mnemonicParsing="false" onAction="#edit" text="Edit Product">
+                <Button fx:id="editButton" mnemonicParsing="false" onAction="#save" text="Save Changes">
                     <styleClass>
                         <String fx:value="btn-primary" />
                         <String fx:value="my-btn" />

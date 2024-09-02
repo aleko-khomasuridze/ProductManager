@@ -23,6 +23,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Objects;
 
+/**
+ * Controller class for managing the product table view.
+ * <p>
+ * This class handles the display, addition, editing, and deletion of products in the table view.
+ * It also provides the necessary interactions with the database to perform these operations.
+ * </p>
+ */
 public class TableController {
     @FXML
     private TableView<Product> productsTableView;
@@ -39,21 +46,26 @@ public class TableController {
     @FXML
     private TableColumn<Product, Void> actionView;
 
-
     private Connection connection = null;
     private ProductDAOImpl productDAO = null;
     private DatabaseService databaseService = null;
-
     private ObservableList<Product> productData = FXCollections.observableArrayList();
 
+    /**
+     * Initializes the controller after the FXML file has been loaded.
+     * <p>
+     * This method sets up the table columns, establishes a database connection,
+     * and populates the table with product data.
+     * </p>
+     */
     @FXML
     public void initialize() {
+        // Set up table columns to map to Product entity fields
         idView.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameView.setCellValueFactory(new PropertyValueFactory<>("name"));
         descriptionView.setCellValueFactory(new PropertyValueFactory<>("description"));
         priceView.setCellValueFactory(new PropertyValueFactory<>("price"));
         quantityView.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-
 
         try {
             this.connection = ConnectionUtil.getConnection();
@@ -63,18 +75,23 @@ public class TableController {
             System.out.print(e.getMessage());
         }
 
+        // Load product data and display it in the table view
         this.productData = databaseService.getAllProducts();
-
         productsTableView.setItems(productData);
         addButtonToTable();
     }
 
+    /**
+     * Adds edit and delete buttons to the action column of the table view.
+     * <p>
+     * The edit button opens a new window for editing the selected product.
+     * The delete button removes the selected product from the database after confirmation.
+     * </p>
+     */
     private void addButtonToTable() {
         actionView.setCellFactory(param -> new TableCell<Product, Void>() {
             private final Button editButton = new Button("Edit");
             private final Button deleteButton = new Button("Delete");
-
-
 
             {
                 editButton.getStyleClass().add("btn-default");
@@ -105,6 +122,15 @@ public class TableController {
         });
     }
 
+    /**
+     * Handles the action of editing a product.
+     * <p>
+     * This method opens a new window to edit the selected product and passes the product
+     * data to the editing controller.
+     * </p>
+     *
+     * @param product The product to be edited.
+     */
     private void handleEditAction(Product product) {
         Stage stage = new Stage();
         Parent root = null;
@@ -125,9 +151,17 @@ public class TableController {
         stage.show();
     }
 
+    /**
+     * Handles the action of deleting a product.
+     * <p>
+     * This method prompts the user for confirmation before deleting the selected product
+     * from the database and removing it from the table view.
+     * </p>
+     *
+     * @param product The product to be deleted.
+     */
     private void handleDeleteAction(Product product) {
         // Confirm before deleting
-
         boolean confirmed = ConfirmDialog.show("Are you sure you want to delete this product?");
         if (confirmed) {
             databaseService.deleteProduct(product);
@@ -135,12 +169,30 @@ public class TableController {
         }
     }
 
+    /**
+     * Refreshes the product data in the table view.
+     * <p>
+     * This method clears the existing product data and reloads it from the database.
+     * </p>
+     *
+     * @param event The action event triggered by a refresh action.
+     */
     public void refreshProductData(ActionEvent event) {
         productData.clear();
         productData.addAll(databaseService.getAllProducts());
         productsTableView.setItems(productData);
     }
 
+    /**
+     * Opens a new window to add a new product.
+     * <p>
+     * This method creates a new window for entering the details of a new product
+     * and adds it to the database upon submission.
+     * </p>
+     *
+     * @param event The action event triggered by the add new product button.
+     * @throws IOException If the FXML file for the add product window cannot be loaded.
+     */
     public void addNewProduct(ActionEvent event) throws IOException {
         Stage addStage = new Stage();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/example/productmanager/alekokhomasuridze/AddProductWindow.fxml")));
@@ -153,5 +205,4 @@ public class TableController {
         addStage.setScene(scene);
         addStage.show();
     }
-
 }

@@ -7,14 +7,31 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
+/**
+ * Implementation of the ProductDAO interface for managing product data in the database.
+ * <p>
+ * This class provides methods to insert, update, delete, and retrieve product data
+ * from the database. It uses JDBC to interact with the database.
+ * </p>
+ */
 public class ProductDAOImpl implements ProductDAO {
     private final Connection connection;
 
+    /**
+     * Constructs a new ProductDAOImpl with the specified database connection.
+     *
+     * @param connection The database connection to be used for data operations.
+     */
     public ProductDAOImpl(Connection connection) {
         this.connection = connection;
     }
 
-
+    /**
+     * Inserts a new product into the database.
+     *
+     * @param product The product to be inserted.
+     * @throws SQLException If an SQL error occurs during the operation.
+     */
     @Override
     public void insertProduct(Product product) throws SQLException {
         String sql = "INSERT INTO Products (name, description, price, quantity) VALUES (?, ?, ?, ?)";
@@ -39,6 +56,12 @@ public class ProductDAOImpl implements ProductDAO {
         }
     }
 
+    /**
+     * Retrieves all products from the database.
+     *
+     * @return An ObservableList of all products.
+     * @throws SQLException If an SQL error occurs during the operation.
+     */
     @Override
     public ObservableList<Product> findAllProduct() throws SQLException {
         ObservableList<Product> products = FXCollections.observableArrayList();
@@ -58,8 +81,13 @@ public class ProductDAOImpl implements ProductDAO {
         return products;
     }
 
-
-
+    /**
+     * Updates an existing product in the database with new values.
+     *
+     * @param targetProduct The product to be updated.
+     * @param newProduct    The new product data to replace the existing data.
+     * @throws SQLException If an SQL error occurs during the operation.
+     */
     @Override
     public void updateProduct(Product targetProduct, Product newProduct) throws SQLException {
         String sql = "UPDATE Products SET name = ?, description = ?, price = ?, quantity = ? WHERE id = ?";
@@ -77,6 +105,13 @@ public class ProductDAOImpl implements ProductDAO {
         }
     }
 
+    /**
+     * Deletes a product from the database.
+     *
+     * @param product The product to be deleted.
+     * @return {@code true} if the product was successfully deleted; {@code false} otherwise.
+     * @throws SQLException If an SQL error occurs during the operation.
+     */
     @Override
     public boolean deleteProduct(Product product) throws SQLException {
         String sql = "DELETE FROM Products WHERE id = ?";
@@ -87,6 +122,13 @@ public class ProductDAOImpl implements ProductDAO {
         }
     }
 
+    /**
+     * Finds a product in the database by its ID.
+     *
+     * @param id The ID of the product to be found.
+     * @return A ProductDTO containing the product's data, or {@code null} if no product was found with the specified ID.
+     * @throws SQLException If an SQL error occurs during the operation.
+     */
     @Override
     public ProductDTO findProductById(int id) throws SQLException {
         String sql = "SELECT * FROM Products WHERE id = ?";
