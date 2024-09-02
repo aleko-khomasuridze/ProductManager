@@ -9,12 +9,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class TableController {
     @FXML
@@ -67,7 +74,12 @@ public class TableController {
             private final Button editButton = new Button("Edit");
             private final Button deleteButton = new Button("Delete");
 
+
+
             {
+                editButton.getStyleClass().add("btn-default");
+                deleteButton.getStyleClass().add("btn-danger");
+
                 editButton.setOnAction(event -> {
                     Product product = getTableView().getItems().get(getIndex());
                     handleEditAction(product);
@@ -115,15 +127,14 @@ public class TableController {
         productsTableView.setItems(productData);
     }
 
-    public void addDummyProduct(ActionEvent event) {
-        try {
-            int nextId = productData.size() + 1; // Simple way to increment ID
-            Product newProduct = new Product(nextId, "Product " + nextId, "Description for product " + nextId, 99.99 * nextId, nextId * 10);
-            productData.add(newProduct);
-            databaseService.addProduct(newProduct);
-            this.refreshProductData(event);
-        } catch (Exception e) {
-            System.out.print(e.getMessage());
-        }
+    public void addNewProduct(ActionEvent event) throws IOException {
+        Stage addStage = new Stage();
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/productmanager/alekokhomasuridze/AddProductWindow.fxml")));
+        Scene scene = new Scene(parent);
+        addStage.setTitle("Add New Product");
+        addStage.initModality(Modality.APPLICATION_MODAL); // Makes the window modal
+        addStage.setScene(scene);
+        addStage.show();
     }
+
 }

@@ -11,5 +11,7 @@ module com.example.productmanager.alekokhomasuridze {
 
     opens com.example.productmanager.alekokhomasuridze.model.entity to javafx.base;
     opens com.example.productmanager.alekokhomasuridze.controller to javafx.fxml;
+    opens com.example.productmanager.alekokhomasuridze to javafx.fxml;
+
     exports com.example.productmanager.alekokhomasuridze;
 }

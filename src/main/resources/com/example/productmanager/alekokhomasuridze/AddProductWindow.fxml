@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="383.0" prefWidth="425.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.productmanager.alekokhomasuridze.controller.ProductAddController">
+   <top>
+      <Label alignment="CENTER" prefHeight="59.0" prefWidth="384.0" styleClass="bg-primary" text="Add New Product" textAlignment="CENTER" textFill="#363636" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Consolas" size="32.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <bottom>
+      <ButtonBar prefHeight="67.0" prefWidth="385.0" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#add" text="Cancel">
+               <styleClass>
+                  <String fx:value="btn-default" />
+                  <String fx:value="my-btn" />
+               </styleClass></Button>
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#add" text="Add Product">
+               <styleClass>
+                  <String fx:value="btn-primary" />
+                  <String fx:value="my-btn" />
+               </styleClass></Button>
+        </buttons>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </ButtonBar>
+   </bottom>
+   <center>
+      <GridPane prefHeight="401.0" prefWidth="389.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="128.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="264.0" minWidth="10.0" prefWidth="217.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="328.0" minHeight="10.0" prefHeight="54.0" vgrow="ALWAYS" />
+          <RowConstraints maxHeight="247.0" minHeight="0.0" prefHeight="54.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="328.0" minHeight="10.0" prefHeight="16.0" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <TextField prefHeight="25.0" prefWidth="223.0" promptText="Enter Product Description" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <styleClass>
+                  <String fx:value="btn-default" />
+                  <String fx:value="my-btn" />
+               </styleClass></TextField>
+            <TextField promptText="Product Quantity" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <styleClass>
+                  <String fx:value="my-btn" />
+                  <String fx:value="btn-default" />
+               </styleClass></TextField>
+            <Label text="Product Name" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label text="Product Quantity" GridPane.rowIndex="4">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <TextField promptText="Product Price" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <styleClass>
+                  <String fx:value="my-btn" />
+                  <String fx:value="btn-default" />
+               </styleClass></TextField>
+            <TextField promptText="Enter Product Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <styleClass>
+                  <String fx:value="btn-default" />
+                  <String fx:value="my-btn" />
+               </styleClass></TextField>
+            <Label text="Product Description" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label text="Product Price" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+         <padding>
+            <Insets left="30.0" right="20.0" />
+         </padding>
+      </GridPane>
+   </center>
+   <stylesheets>
+      <URL value="@styles/buttons.css" />
+      <URL value="@styles/bootstrapfx.css" />
+   </stylesheets>
+</BorderPane>
