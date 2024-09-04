@@ -1,6 +1,9 @@
 package com.example.productmanager.alekokhomasuridze.config;
 
 
+import com.example.productmanager.alekokhomasuridze.Logger.Logger;
+import com.example.productmanager.alekokhomasuridze.Logger.Module.Log;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -22,7 +25,7 @@ public class DatabaseConfig {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            Logger.log.Error(e.getMessage());
         }
     }
 
