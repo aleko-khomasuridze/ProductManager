@@ -22,7 +22,7 @@ public class LogUtils {
                 return String.format("%s[%s]~[%s]:%s %s", color, logLevel, currentTime, LogColor.RESET, msg);
             }
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            System.out.print(e.getMessage());
         }
         return String.format("[%s]~[]: %s", logLevel, msg);
     }

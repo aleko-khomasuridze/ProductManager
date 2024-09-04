@@ -1,5 +1,6 @@
 package com.example.productmanager.alekokhomasuridze.controller;
 
+import com.example.productmanager.alekokhomasuridze.Logger.Logger;
 import com.example.productmanager.alekokhomasuridze.alerts.ConfirmDialog;
 import com.example.productmanager.alekokhomasuridze.dao.ProductDAOImpl;
 import com.example.productmanager.alekokhomasuridze.model.entity.Product;
@@ -72,7 +73,7 @@ public class TableController {
             this.productDAO = new ProductDAOImpl(connection);
             this.databaseService = new DatabaseService(productDAO);
         } catch (SQLException e) {
-            System.out.print(e.getMessage());
+            Logger.log.Error(e.getMessage());
         }
 
         // Load product data and display it in the table view
@@ -141,7 +142,7 @@ public class TableController {
             productEditController.setProduct(product);
             productEditController.setTableController(this);
         } catch (IOException | NullPointerException e) {
-            System.out.print(e.getMessage());
+            Logger.log.Error(e.getMessage());
         }
         Scene scene = new Scene(root);
         stage.setScene(scene);

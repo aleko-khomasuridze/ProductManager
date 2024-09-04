@@ -1,5 +1,6 @@
 package com.example.productmanager.alekokhomasuridze.controller;
 
+import com.example.productmanager.alekokhomasuridze.Logger.Logger;
 import com.example.productmanager.alekokhomasuridze.dao.ProductDAOImpl;
 import com.example.productmanager.alekokhomasuridze.model.entity.Product;
 import com.example.productmanager.alekokhomasuridze.service.DatabaseService;
@@ -48,7 +49,7 @@ public class ProductAddController {
             ProductDAOImpl productDAO = new ProductDAOImpl(ConnectionUtil.getConnection());
             databaseService = new DatabaseService(productDAO);
         } catch (SQLException e) {
-            System.out.printf("%s", e.getMessage());
+            Logger.log.Error(e.getMessage());
         }
     }
 
