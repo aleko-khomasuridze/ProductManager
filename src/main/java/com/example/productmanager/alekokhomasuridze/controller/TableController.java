@@ -194,10 +194,15 @@ public class TableController {
      * @param event The action event triggered by the add new product button.
      * @throws IOException If the FXML file for the add product window cannot be loaded.
      */
-    public void addNewProduct(ActionEvent event) throws IOException {
+    public void addNewProduct(ActionEvent event) {
         Stage addStage = new Stage();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/example/productmanager/alekokhomasuridze/AddProductWindow.fxml")));
-        Parent parent = loader.load();
+        Parent parent = null;
+        try {
+            parent = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         ProductAddController productAddController = loader.getController();
         productAddController.setTableController(this);
         Scene scene = new Scene(parent);
